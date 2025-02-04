@@ -1,9 +1,24 @@
-// src/App.test.js
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { act } from 'react-dom/test-utils';
 import App from './App';
 
+let container;
+
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  document.body.removeChild(container);
+  container = null;
+});
+
 test('renders My React App! heading', () => {
-  render(<App />);
-  const headingElement = screen.getByText(/My React App!/i);
-  expect(headingElement).toBeInTheDocument();
+  act(() => {
+    ReactDOM.render(<App />, container);
+  });
+  const headingElement = container.querySelector('h1');
+  expect(headingElement.textContent).toBe('My React App!');
 });
