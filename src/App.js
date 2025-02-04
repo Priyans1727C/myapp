@@ -4,7 +4,7 @@ import React from 'react';
 function App() {
   return (
     <div>
-      <a href="https://reactjs.org">Learn React</a>
+      <h1>My React App!</h1>
     </div>
   );
 }
